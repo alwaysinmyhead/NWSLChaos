@@ -72,37 +72,44 @@
         };
         var options = {
           nodes: {
-            shape: "dot",
-			borderWidth: 6,
-            size: 30,
-          },
-		  groups: {
-			notgrouped: {color:{background:'gray', border:'gray'}, borderWidth:3}
-		  },
-          physics: {
-            forceAtlas2Based: {
-              gravitationalConstant: -26,
-              centralGravity: 0.005,
-              springLength: 230,
-              springConstant: 0.18,
+            shape: "circularImage",
+			      borderWidth: 6,
+            size: 40,
+            fixed: {
+              x:true,
+              y:true
             },
-			barnesHut: {
-				theta: 0.7,
-				gravitationalConstant: -4000,
-				centralGravity: 0.9,
-				springLength: 50,
-				springConstant: 0.08,
-				damping: 0.5,
-				avoidOverlap: 0.3
-		    },
-			repulsion: {
-			  centralGravity: 0.2,
-			  springLength: 180,
-			  springConstant: 0.2,
-			  nodeDistance: 160,
-			  damping: 0.09,
-			},
-
+          },
+          edges: {
+            arrows: {
+              to: {
+                enabled: true,
+              },
+            },
+            scaling:{
+              min: 1,
+              max: 3,
+              label: {
+                enabled: true,
+                min: 10,
+                max: 24,
+                maxVisible: 30,
+                drawThreshold: 5
+              },
+            },
+            selectionWidth: function (width) {return width*2;}
+          },
+		      groups: {
+			      notgrouped: {color:{background:'gray', border:'gray'}, borderWidth:3}
+		      },
+          physics: {
+            repulsion: {
+              centralGravity: 0.2,
+              springLength: 500,
+              springConstant: 0.2,
+              nodeDistance: 200,
+              damping: 0.09,
+            },
             maxVelocity: 200,
             solver: "repulsion",
             timestep: 0.35,
